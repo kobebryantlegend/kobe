@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width,initial-scale=1'>
+    <title>Title</title>
+    <style>
+        img{
+            display: block;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<script>
+    var arr=[7,313,21,1,111]
+//    var start= Date.now()
+//    console.log(start)
+//    for(var i=0;i<arr.length;i++){
+//        var flag=true;
+//        for(var j=0;j<arr.length-1-i;j++){
+//            if(arr[j]>arr[j+1]){
+//                var temp=arr[j+1];
+//                arr[j+1]=arr[j];
+//                arr[j]=temp;
+//                flag=false;
+//            }
+//        }
+//        if(flag){
+//            break;
+//        }
+//    }
+    function quickSort(arr){
+        if(arr.length<=1){
+            return arr;//如果数组只有一个数，就直接返回；
+        }
+        var num = Math.floor(arr.length/2);//找到中间数的索引值，如果是浮点数，则向下取整
+        var numValue = arr.splice(num,1);//找到中间数的值
+        var left = [];
+        var right = [];
+        for(var i=0;i<arr.length;i++){
+            if(arr[i]<numValue){
+                left.push(arr[i]);//基准点的左边的数传到左边数组
+            }
+            else{
+                right.push(arr[i]);//基准点的右边的数传到右边数组
+            }
+        }
+
+        return quickSort(left).concat([numValue],quickSort(right));//递归不断重复比较
+    }
+
+    var result=quickSort(arr);
+    console.log(result[0])
+    console.log(result[1])
+    console.log(result[2])
+    console.log(result[3])
+    console.log(result[4])
+
+
+//    var fullname = 'John Doe';
+//    var obj = {
+//        fullname: 'Colin Ihrig',
+//        prop: {
+//            fullname: 'Aurelio De Rosa',
+//            getFullname: function() {
+//                return this.fullname;
+//            }
+//        }
+//    };
+//    console.log(obj.prop.getFullname());//Aurelio De Rosa
+//    var test = obj.prop.getFullname;
+//    console.log(test());//John Doe
+
+//    function test() {
+//        console.log(a); //undefined
+//        console.log(foo()); //2
+//        var a = 1;
+//        function foo() {
+//            return 2;
+//        }
+//    }
+//    test();
+//    String.prototype.repeatify=String.prototype.repeatify||function(num){
+//        var str='';
+//        for(var i=0;i<num;i++){
+//            str+=this;
+//        }
+//        return str;
+//    }
+//    console.log('hello'.repeatify(3))
+//    var totle='';
+//    var times=0;
+//    for(var i=1;i<110;i++){
+//        totle+=i;
+//    }
+//    var arr=totle.split('')
+//    for (var i = 0; i < arr.length; i++) {
+//        if(arr[i]==0){
+//           times++;
+//        }
+//
+//    }
+//    console.log(totle)
+//    console.log(times)
+//    console.log(/\d?/.exec([0,[211,112]])[0]==0)
+//    function Person(name,age){
+//        this.name=name;
+//        this.age=age
+//    }
+//    Person.prototype.sayHello=function(){
+//        alert('你好')
+//    }
+//    var p1=new Person('zx',10)
+//    console.log(p1.hasOwnProperty('sayHello'))
+//    for(var k in p1){
+//        console.log(k)
+//    }
+//    function Dog(name){
+//        this.name=name;
+//    }
+//    Dog.prototype.say=function(){
+//        alert('旺旺')
+//    }
+//    var dog=new Dog('狗')
+//    function Cat(){}
+//    Cat.prototype.say=function(){
+//        alert('喵喵')
+//    }
+//    var cat=new Cat();
+//    cat.extend=function(obj){
+//        for(var k in obj){
+//            if(obj.hasOwnProperty(k)){
+//                this[k]=obj[k]
+//            }
+//        }
+//        return this;
+//    }
+//    cat.extend(dog)
+//    cat.say()
+//   console.log(cat.name);
+</script>
+</body>
+</html>
